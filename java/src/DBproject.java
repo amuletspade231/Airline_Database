@@ -310,6 +310,39 @@ public class DBproject{
 	public static void AddFlight(DBproject esql) {//3
 		// Given a pilot, plane and flight, adds a flight in the DB
 		//KATIE
+		try {
+			System.out.println("What's the flight number? $");
+			int fnum = in.readLine();
+			System.out.println("How much does the flight cost? $");
+			int cost = in.readLine();
+			System.out.println("How many seats are sold? $");
+			int seats = in.readLine();
+			System.out.println("How mnay stops does this flight make? $");
+			int stops = in.readLine();
+			System.out.println("What is the departure time? (use format yyyy-mm-dd hh:mm) $");
+			String dep_time = in.readLine();
+			System.out.println("What is the arrival time? (use format yyyy-mm-dd hh:mm) $");
+			String arv_time = in.readLine();
+			System.out.println("Where is the flight arriving to? $");
+			String ariv = in.readLine();
+			System.out.println("Where is the flight departing from? $");
+			String dept = in.readLine();
+			String query = "INSERT INTO Flight VALUES ("
+			+ fnum + ", "
+			+ cost + ", "
+			+ seats + ", "
+			+ stops + ", "
+			+ dep_time + ", "
+			+ arv_time + ", "
+			+ ariv + ", "
+			+ dept + ");";
+			esql.executeQuery(query);
+			System.out.println("Flight added!");
+			//TODO: insert into flightinfo
+			//TODO: insert into schedule 
+		} catch (Exception E) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void AddTechnician(DBproject esql) {//4
