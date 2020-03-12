@@ -331,22 +331,35 @@ public class DBproject{
 			+ fnum + ", "
 			+ cost + ", "
 			+ seats + ", "
-			+ stops + ", "
-			+ dep_time + ", "
-			+ arv_time + ", "
-			+ ariv + ", "
-			+ dept + ");";
+			+ stops + ", \'"
+			+ dep_time + "\', \'"
+			+ arv_time + "\', \'"
+			+ ariv + "\', \'"
+			+ dept + "\');";
 			esql.executeQuery(query);
 			System.out.println("Flight added!");
 			//TODO: insert into flightinfo
 			//TODO: insert into schedule 
-		} catch (Exception E) {
+		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 	}
 
 	public static void AddTechnician(DBproject esql) {//4
 		//KATIE
+		try {
+			System.out.println("What is the technician's id? $");
+			int id = in.readLine();
+			System.out.println("What is the technician's full name? $");
+			String name = in.readLine();
+			String query = "INSERT INTO Technician VALUES ("
+			+ id + ", \'"
+			+ name + "\');";
+			esql.executeQuery(query);
+			System.out.println("Technician added!");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void BookFlight(DBproject esql) {//5
@@ -367,10 +380,22 @@ public class DBproject{
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {//8
 		// Count repairs per year and list them in ascending order
 		//KATIE
+		try {
+			String query = "";
+			esql.executeQuery(query);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	public static void FindPassengersCountWithStatus(DBproject esql) {//9
 		// Find how many passengers there are with a status (i.e. W,C,R) and list that number.
 		//KATIE	
+		try {
+			String query = "";
+			esql.executeQuery(query);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 }
