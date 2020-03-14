@@ -398,15 +398,15 @@ public class DBproject{
 			switch(status) {
 				case "w" :
 				case "W" :
-					query += "WHERE status = W;";
+					query += "WHERE status = 'W';";
 					break;
 				case "c" :
 				case "C" :
-					query += "WHERE status = C;";
+					query += "WHERE status = 'C';";
 					break;
 				case "r" :
 				case "R" :
-					query += "WHERE status = R;";
+					query += "WHERE status = 'R';";
 					break;
 				default:
 					query += ";";
