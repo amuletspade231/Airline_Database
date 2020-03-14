@@ -392,8 +392,26 @@ public class DBproject{
 		// Find how many passengers there are with a status (i.e. W,C,R) and list that number.
 		//KATIE	
 		try {
-			String query = "";
-			esql.executeQuery(query);
+			System.out.println("Would you like to find the number of waitlisted, confirmed, or reserved passengers? (w, c, or r) $");
+			string status = in.readLine();
+			String query = "SELECT * FROM Reservation ";
+			switch(status) {
+				case "w" || "W" :
+					query += "WHERE status = W;";
+					break;
+				case "c" || "C" :
+					query += "WHERE status = C;";
+					break;
+				case "r" || "R" :
+					query += "WHERE status = R;";
+					break;
+				default:
+					query += ";";
+					break;
+			}
+			
+			int rows = esql.executeQuery(query);
+			System.out.println("There are " + rows + " passengers with that status.");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
