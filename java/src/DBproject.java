@@ -304,8 +304,7 @@ public class DBproject{
 		try {
 			String query = "SELECT MAX(id) FROM Pilot";
 			next_id = esql.executeQuery(query);
-			print("next id:")
-			print(next_id)
+			System.out.println("next id: " + next_id);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
