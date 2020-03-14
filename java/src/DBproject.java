@@ -301,10 +301,34 @@ public class DBproject{
 
 	public static void AddPlane(DBproject esql) {//1
 		//AMANDA
+		try {
+			String query = "SELECT MAX(id) FROM Pilot";
+			next_id = esql.executeQuery(query);
+			print("next id:")
+			print(next_id)
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void AddPilot(DBproject esql) {//2
 		//AMANDA
+		try {
+			System.out.println("What is the pilot's id? $");
+			String id = in.readLine();
+			System.out.println("What is the pilot's full name? $");
+			String name = in.readLine();
+			System.out.println("What is the pilot's nationality? $");
+			String nationality = in.readLine();
+			String query = "INSERT INTO Pilot VALUES ("
+			+ id + ", \'"
+			+ name + ", \'"
+			+ nationality + "\');";
+			esql.executeQuery(query);
+			System.out.println("Technician added!");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void AddFlight(DBproject esql) {//3
