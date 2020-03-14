@@ -303,7 +303,7 @@ public class DBproject{
 		//AMANDA
 		try {
 			String query = "SELECT MAX(id) FROM Pilot";
-			next_id = esql.executeQuery(query);
+			int next_id = esql.executeQuery(query);
 			System.out.println("next id: " + next_id);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
