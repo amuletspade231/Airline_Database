@@ -394,7 +394,7 @@ public class DBproject{
 		try {
 			System.out.println("Would you like to find the number of waitlisted, confirmed, or reserved passengers? (w, c, or r) $");
 			String status = in.readLine();
-			String query = "SELECT * FROM Reservation ";
+			String query = "SELECT COUNT(*) FROM Reservation ";
 			switch(status) {
 				case "w" :
 				case "W" :
