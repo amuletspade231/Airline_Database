@@ -349,7 +349,7 @@ public class DBproject{
 		//KATIE
 		try {
 			System.out.println("What is the technician's id? $");
-			int id = in.readLine();
+			String id = in.readLine();
 			System.out.println("What is the technician's full name? $");
 			String name = in.readLine();
 			String query = "INSERT INTO Technician VALUES ("
@@ -393,7 +393,7 @@ public class DBproject{
 		//KATIE
 		try {
 			System.out.println("Would you like to find the number of waitlisted, confirmed, or reserved passengers? (w, c, or r) $");
-			string status = in.readLine();
+			String status = in.readLine();
 			String query = "SELECT * FROM Reservation ";
 			switch(status) {
 				case "w" :
