@@ -417,7 +417,7 @@ public class DBproject{
 			+ "FROM FlightInfo fi, Flight f, Plane p "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id " 
 			+ "AND f.fnum = " + fnum 
-			+ " AND f.actual_departure_date = " + date ";";
+			+ " AND f.actual_departure_date = " + date + ";";
 			esql.executeQuery(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
