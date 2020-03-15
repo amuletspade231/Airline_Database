@@ -315,8 +315,8 @@ public class DBproject{
 			String query = "INSERT INTO Plane VALUES ("
 			+ id + ", \'"
 			+ make + "\', \'"
-			+ model + "\', ";
-			+ age + ", ";
+			+ model + "\', "
+			+ age + ", "
 			+ seats + ");";
 			esql.executeQuery(query);
 			System.out.println("Plane added!");
