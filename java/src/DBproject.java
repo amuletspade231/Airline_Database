@@ -302,9 +302,24 @@ public class DBproject{
 	public static void AddPlane(DBproject esql) {//1
 		//AMANDA
 		try {
-			String query = "SELECT MAX(id) FROM Pilot";
-			int next_id = esql.executeQuery(query);
-			System.out.println("next id: " + next_id);
+			String id_query = "SELECT MAX(id) FROM Plane";
+			int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
+			System.out.println("What is the plane's make? $");
+			String make = in.readLine();
+			System.out.println("What is the plane's model? $");
+			String model = in.readLine();
+			System.out.println("What is the plane's age? $");
+			String age = in.readLine();
+			System.out.println("How many seats does the plane have? $");
+			String seats = in.readLine();
+			String query = "INSERT INTO Plane VALUES ("
+			+ id + ", \'"
+			+ make + "\', \'"
+			+ model + "\', ";
+			+ age + ", ";
+			+ seats + ");";
+			esql.executeQuery(query);
+			System.out.println("Plane added!");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -313,18 +328,18 @@ public class DBproject{
 	public static void AddPilot(DBproject esql) {//2
 		//AMANDA
 		try {
-			System.out.println("What is the pilot's id? $");
-			String id = in.readLine();
+			String id_query = "SELECT MAX(id) FROM Pilot";
+			int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
 			System.out.println("What is the pilot's full name? $");
 			String name = in.readLine();
 			System.out.println("What is the pilot's nationality? $");
 			String nationality = in.readLine();
 			String query = "INSERT INTO Pilot VALUES ("
 			+ id + ", \'"
-			+ name + ", \'"
+			+ name + "\', \'"
 			+ nationality + "\');";
 			esql.executeQuery(query);
-			System.out.println("Technician added!");
+			System.out.println("Pilot added!");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -393,11 +408,33 @@ public class DBproject{
 	public static void ListNumberOfAvailableSeats(DBproject esql) {//6
 		// For flight number and date, find the number of availalbe seats (i.e. total plane capacity minus booked seats )
 		//AMANDA
+		try {
+			System.out.println("Please enter a flight number: $");
+			String fnum = in.readLine();
+			System.out.println("Please enter a date: $");
+			String date = in.readLine();
+			String query = "SELECT p.seats - f.num_sold
+											FROM FlightInfo fi, Flight f, Plane p
+											WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id AND
+											f.fnum = " + fnum + " AND f.actual_departure_date = " + date ";";
+			esql.executeQuery(query);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void ListsTotalNumberOfRepairsPerPlane(DBproject esql) {//7
 		// Count number of repairs per planes and list them in descending order
 		//AMANDA
+		try {
+			String query = "SELECT plane_id, COUNT(rid) as num_repairs
+											FROM Repairs
+											GROUP BY plane_id
+											ORDER BY plane_id DESC;";
+			esql.executeQueryAndPrintResult(query);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {//8
