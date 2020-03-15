@@ -441,8 +441,14 @@ public class DBproject{
 		// Count repairs per year and list them in ascending order
 		//KATIE
 		try {
-			String query = "";
-			esql.executeQuery(query);
+			String query = "SELECT r_year, COUNT(*)
+							FROM (
+								SELECT YEAR(repair_date) AS r_year
+								FROM Repairs;
+							)
+							GROUP BY r_year
+							ORDER BY r_year ASC;";
+			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
