@@ -349,8 +349,15 @@ public class DBproject{
 		// Given a pilot, plane and flight, adds a flight in the DB
 		//KATIE
 		try {
-			System.out.println("What's the flight number? $");
-			String fnum = in.readLine();
+			String sequence = "CREATE SEQUENCE seq "
+			+ "start with 0 "
+			+ "increment by 1 "
+			+ "minvalue 0 "
+			+ "max value 10000 "
+			+ "nocycle";
+			esql.executeQuery(sequence);
+			//System.out.println("What's the flight number? $");
+			//String fnum = in.readLine();
 			System.out.println("How much does the flight cost? $");
 			String cost = in.readLine();
 			System.out.println("How many seats are sold? $");
@@ -366,7 +373,7 @@ public class DBproject{
 			System.out.println("Where is the flight departing from? $");
 			String dept = in.readLine();
 			String query = "INSERT INTO Flight VALUES ("
-			+ fnum + ", "
+			+ " seq.nextval , "
 			+ cost + ", "
 			+ seats + ", "
 			+ stops + ", \'"
