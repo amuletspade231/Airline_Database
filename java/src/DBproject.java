@@ -375,9 +375,29 @@ public class DBproject{
 			+ ariv + "\', \'"
 			+ dept + "\');";
 			esql.executeQuery(query);
+			//insert into flightinfo
+			System.out.println("What should the flight info id be? $");
+			System finfo = in.readLine();
+			System.out.println("What's the pilot's id? $");
+			String pilot = in.readLine();
+			System.out.println("What's the plane's id? $");
+			String plane = in.readLine();
+			String query2 = "INSERT INTO FlightInfo VALUES ("
+			+ finfo + ", "
+			+ fnum + ", "
+			+ pilot + ", "
+			+ plane + ");";
+			esql.executeQuery(query2);
+			//insert into schedule
+			System.out.println("What should the schedule id be? $");
+			String schedule = in.readLine();
+			String query3 = "INSERT INTO Schedule VALUES ("
+			+ schedule + ", "
+			+ fnum + ", "
+			+ dep_time + ", "
+			+ arv_time + ");";
+			esql.executeQuery(query3);
 			System.out.println("Flight added!");
-			//TODO: insert into flightinfo
-			//TODO: insert into schedule
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
