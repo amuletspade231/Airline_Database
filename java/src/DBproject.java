@@ -322,7 +322,7 @@ public class DBproject{
 			esql.executeUpdate(query);
 			System.out.println("Plane added!");
 
-			String test_query = "SELECT *, MAX(id) as last_id FROM Plane WHERE id = last_id;";
+			String test_query = "SELECT LAST(*) FROM Plane";
 			esql.executeQueryAndPrintResult(test_query);
 
 		} catch (Exception e) {
@@ -347,7 +347,7 @@ public class DBproject{
 			esql.executeUpdate(query);
 			System.out.println("Pilot added!");
 
-			String test_query = "SELECT *, MAX(id) as last_id FROM Pilot WHERE id = last_id;";
+			String test_query = "SELECT LAST(*) FROM Pilot;";
 			esql.executeQueryAndPrintResult(test_query);
 
 		} catch (Exception e) {
@@ -393,7 +393,7 @@ public class DBproject{
 			+ dept + "\');";
 			esql.executeUpdate(query);
 
-			String test_query = "SELECT *, MAX(fnum) as last_id FROM Flight WHERE fnum = last_id;";
+			String test_query = "SELECT LAST(*) FROM Flight;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			int fnum = esql.getCurrSeqVal(sequence);
@@ -411,7 +411,7 @@ public class DBproject{
 			+ plane + ");";
 			esql.executeUpdate(query2);
 
-			test_query = "SELECT *, MAX(flight_id) as last_id FROM Plane WHERE flight_id = last_id;";
+			String test_query = "SELECT LAST(*) FROM FlightInfo;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			//insert into schedule
@@ -424,7 +424,7 @@ public class DBproject{
 			+ arv_time + ");";
 			esql.executeUpdate(query3);
 
-			test_query = "SELECT *, MAX(flightNum) as last_id FROM Plane WHERE flightNum = last_id;";
+			String test_query = "SELECT LAST(*) FROM Schedule;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			System.out.println("Flight added!");
@@ -446,7 +446,7 @@ public class DBproject{
 			esql.executeUpdate(query);
 			System.out.println("Technician added!");
 
-			String test_query = "SELECT *, MAX(id) as last_id FROM Technician WHERE id = last_id;";
+			String test_query = "SELECT LAST(*) FROM Technician;";
 			esql.executeQueryAndPrintResult(test_query);
 
 		} catch (Exception e) {
