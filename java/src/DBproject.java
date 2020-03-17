@@ -419,9 +419,9 @@ public class DBproject{
 			int schedule = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
 			+ schedule + ", "
-			+ fnum + ", "
-			+ dep_time + ", "
-			+ arv_time + ");";
+			+ fnum + ", \'"
+			+ dep_time + "\', "
+			+ arv_time + "\');";
 			esql.executeUpdate(query3);
 
 			test_query = "SELECT MAX(flightNum) FROM Schedule;";
