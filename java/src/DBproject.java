@@ -386,6 +386,7 @@ public class DBproject{
 			+ arv_time + "\', \'"
 			+ ariv + "\', \'"
 			+ dept + "\');";
+			System.out.println(query);
 			esql.executeUpdate(query);
 
 			String test_query = "SELECT MAX(fnum) FROM Flight;";
