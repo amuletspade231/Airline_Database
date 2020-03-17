@@ -439,7 +439,7 @@ public class DBproject{
 			//System.out.println("What is the technician's id? $");
 			//String id = in.readLine();
 			String id_query = "SELECT COUNT(*) FROM Technician";
-			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0)) +1;
 			System.out.println("What is the technician's full name? $");
 			String name = in.readLine();
 			String query = "INSERT INTO Technician VALUES ("
