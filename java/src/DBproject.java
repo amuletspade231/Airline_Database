@@ -367,7 +367,7 @@ public class DBproject{
 			String cost = in.readLine();
 			System.out.println("How many seats are sold? $");
 			String seats = in.readLine();
-			System.out.println("How mnay stops does this flight make? $");
+			System.out.println("How many stops does this flight make? $");
 			String stops = in.readLine();
 			System.out.println("What is the departure time? (use format yyyy-mm-dd hh:mm) $");
 			String dep_time = in.readLine();
@@ -378,7 +378,7 @@ public class DBproject{
 			System.out.println("Where is the flight departing from? $");
 			String dept = in.readLine();
 			String query = "INSERT INTO Flight VALUES ("
-			+ " seq.nextval , "
+			+ fnum + ", "
 			+ cost + ", "
 			+ seats + ", "
 			+ stops + ", \'"
@@ -512,7 +512,7 @@ public class DBproject{
 			String query = "SELECT r_year, COUNT(*) "
 			+ "FROM ( "
 			+ "SELECT YEAR(repair_date) AS r_year "
-			+ "FROM Repairs; "
+			+ "FROM Repairs "
 			+ ") "
 			+ "GROUP BY r_year "
 			+ "ORDER BY r_year ASC;";
