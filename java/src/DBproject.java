@@ -324,7 +324,7 @@ public class DBproject{
 
 			String test_query = "SELECT *, MAX(id) as last_id FROM Plane WHERE id = last_id;";
 			esql.executeQueryAndPrintResult(test_query);
-			
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -411,7 +411,7 @@ public class DBproject{
 			+ plane + ");";
 			esql.executeUpdate(query2);
 
-			String test_query = "SELECT *, MAX(flight_id) as last_id FROM Plane WHERE flight_id = last_id;";
+			test_query = "SELECT *, MAX(flight_id) as last_id FROM Plane WHERE flight_id = last_id;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			//insert into schedule
@@ -424,7 +424,7 @@ public class DBproject{
 			+ arv_time + ");";
 			esql.executeUpdate(query3);
 
-			String test_query = "SELECT *, MAX(flightNum) as last_id FROM Plane WHERE flightNum = last_id;";
+			test_query = "SELECT *, MAX(flightNum) as last_id FROM Plane WHERE flightNum = last_id;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			System.out.println("Flight added!");
