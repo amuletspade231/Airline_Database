@@ -367,7 +367,7 @@ public class DBproject{
 			String cost = in.readLine();
 			System.out.println("How many seats are sold? $");
 			String seats = in.readLine();
-			System.out.println("How mnay stops does this flight make? $");
+			System.out.println("How many stops does this flight make? $");
 			String stops = in.readLine();
 			System.out.println("What is the departure time? (use format yyyy-mm-dd hh:mm) $");
 			String dep_time = in.readLine();
@@ -378,7 +378,7 @@ public class DBproject{
 			System.out.println("Where is the flight departing from? $");
 			String dept = in.readLine();
 			String query = "INSERT INTO Flight VALUES ("
-			+ " seq.nextval , "
+			+ fnum + ", "
 			+ cost + ", "
 			+ seats + ", "
 			+ stops + ", \'"
@@ -415,7 +415,7 @@ public class DBproject{
 			//System.out.println("What should the schedule id be? $");
 			//String schedule = in.readLine();
 			id_query = "SELECT COUNT(*) FROM Schedule";
-			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
+			int schedule = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
 			+ Integer.toString(schedule) + ", "
 			+ fnum + ", "
@@ -522,13 +522,13 @@ public class DBproject{
 		// Count repairs per year and list them in ascending order
 		//KATIE
 		try {
-			String query = "SELECT r_year, COUNT(*) "
+			String query = "SELECT R.r_year, COUNT(*) AS Number_Of_Repairs"
 			+ "FROM ( "
-			+ "SELECT YEAR(repair_date) AS r_year "
-			+ "FROM Repairs; "
-			+ ") "
-			+ "GROUP BY r_year "
-			+ "ORDER BY r_year ASC;";
+			+ "SELECT EXTRACT(YEAR FROM repair_date) AS r_year "
+			+ "FROM Repairs "
+			+ ") AS R "
+			+ "GROUP BY R.r_year "
+			+ "ORDER BY R.r_year ASC;";
 			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
