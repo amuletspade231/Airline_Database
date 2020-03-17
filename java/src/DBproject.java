@@ -303,7 +303,8 @@ public class DBproject{
 		//AMANDA
 		try {
 			String id_query = "SELECT MAX(id) FROM Plane";
-			int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
+			//int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
+			int id = 1000;
 			System.out.println("What is the plane's make? $");
 			String make = in.readLine();
 			System.out.println("What is the plane's model? $");
@@ -329,7 +330,8 @@ public class DBproject{
 		//AMANDA
 		try {
 			String id_query = "SELECT MAX(id) FROM Pilot";
-			int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
+			//int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
+			int id = 1000;
 			System.out.println("What is the pilot's full name? $");
 			String name = in.readLine();
 			System.out.println("What is the pilot's nationality? $");
@@ -382,16 +384,17 @@ public class DBproject{
 			+ ariv + "\', \'"
 			+ dept + "\');";
 			esql.executeQuery(query);
+			int fnum = esql.getCurrSeqVal(sequence);
 			//insert into flightinfo
 			System.out.println("What should the flight info id be? $");
-			System finfo = in.readLine();
+			String finfo = in.readLine();
 			System.out.println("What's the pilot's id? $");
 			String pilot = in.readLine();
 			System.out.println("What's the plane's id? $");
 			String plane = in.readLine();
 			String query2 = "INSERT INTO FlightInfo VALUES ("
 			+ finfo + ", "
-			+ fnum + ", "
+			+ Integer.toString(fnum) + ", "
 			+ pilot + ", "
 			+ plane + ");";
 			esql.executeQuery(query2);
