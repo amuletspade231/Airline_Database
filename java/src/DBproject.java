@@ -378,7 +378,7 @@ public class DBproject{
 			System.out.println("Where is the flight departing from? $");
 			String dept = in.readLine();
 			String query = "INSERT INTO Flight VALUES ("
-			+ " seq.nextval , "
+			+ fnum + ", "
 			+ cost + ", "
 			+ seats + ", "
 			+ stops + ", \'"
