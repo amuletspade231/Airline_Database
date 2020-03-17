@@ -461,7 +461,7 @@ public class DBproject{
 			String query = "SELECT plane_id, COUNT(rid) as num_repairs "
 			+ "FROM Repairs "
 			+ "GROUP BY plane_id "
-			+ "ORDER BY plane_id DESC;";
+			+ "ORDER BY num_repairs DESC;";
 			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
