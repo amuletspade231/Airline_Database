@@ -403,8 +403,8 @@ public class DBproject{
 			System.out.println("What's the plane's id? $");
 			String plane = in.readLine();
 			String query2 = "INSERT INTO FlightInfo VALUES ("
-			+ Integer.toString(finfo) + ", "
-			+ Integer.toString(fnum) + ", "
+			+ finfo + ", "
+			+ fnum + ", "
 			+ pilot + ", "
 			+ plane + ");";
 			esql.executeUpdate(query2);
@@ -418,7 +418,7 @@ public class DBproject{
 			id_query = "SELECT COUNT(*) FROM Schedule";
 			int schedule = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
-			+ Integer.toString(schedule) + ", "
+			+ schedule + ", "
 			+ fnum + ", "
 			+ dep_time + ", "
 			+ arv_time + ");";
