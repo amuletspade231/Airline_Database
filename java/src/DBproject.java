@@ -509,7 +509,7 @@ public class DBproject{
 		// Count repairs per year and list them in ascending order
 		//KATIE
 		try {
-			String query = "SELECT R.r_year, COUNT(*) "
+			String query = "SELECT R.r_year, COUNT(*) AS Number_Of_Repairs"
 			+ "FROM ( "
 			+ "SELECT EXTRACT(YEAR FROM repair_date) AS r_year "
 			+ "FROM Repairs "
