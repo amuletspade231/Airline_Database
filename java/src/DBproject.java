@@ -411,7 +411,7 @@ public class DBproject{
 			+ plane + ");";
 			esql.executeUpdate(query2);
 
-			String test_query = "SELECT LAST(*) FROM FlightInfo;";
+			test_query = "SELECT LAST(*) FROM FlightInfo;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			//insert into schedule
@@ -424,7 +424,7 @@ public class DBproject{
 			+ arv_time + ");";
 			esql.executeUpdate(query3);
 
-			String test_query = "SELECT LAST(*) FROM Schedule;";
+			test_query = "SELECT LAST(*) FROM Schedule;";
 			esql.executeQueryAndPrintResult(test_query);
 
 			System.out.println("Flight added!");
