@@ -363,8 +363,8 @@ public class DBproject{
 			+ "start with 0 "
 			+ "increment by 1 "
 			+ "minvalue 0 "
-			+ "max value 10000 "
-			+ "nocycle";
+			+ "maxvalue 10000 "
+			+ "nocycle;";
 			esql.executeQuery(sequence);
 			//System.out.println("What's the flight number? $");
 			//String fnum = in.readLine();
@@ -527,7 +527,7 @@ public class DBproject{
 		try {
 			System.out.println("Would you like to find the number of waitlisted, confirmed, or reserved passengers? (w, c, or r) $");
 			String status = in.readLine();
-			String query = "SELECT COUNT(*) FROM Reservation ";
+			String query = "SELECT COUNT(*) AS Number_Of_Passengers FROM Reservation ";
 			switch(status) {
 				case "w" :
 					query += "WHERE status = 'W';";
