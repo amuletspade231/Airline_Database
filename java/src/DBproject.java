@@ -302,9 +302,9 @@ public class DBproject{
 	public static void AddPlane(DBproject esql) {//1
 		//AMANDA
 		try {
-			String id_query = "SELECT MAX(id) FROM Plane";
-			//int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
-			int id = 1000;
+			String id_query = "SELECT id FROM Plane";
+			int id = executeQuery(id_query);
+			//int id = 1000;
 			System.out.println("What is the plane's make? $");
 			String make = in.readLine();
 			System.out.println("What is the plane's model? $");
@@ -329,9 +329,9 @@ public class DBproject{
 	public static void AddPilot(DBproject esql) {//2
 		//AMANDA
 		try {
-			String id_query = "SELECT MAX(id) FROM Pilot";
-			//int id = Integer.parseInt(executeQueryAndReturnResult(id_query).get(0).get(0)) + 1;
-			int id = 1000;
+			String id_query = "SELECT id FROM Pilot";
+			int id = executeQuery(id_query);
+			//int id = 1000;
 			System.out.println("What is the pilot's full name? $");
 			String name = in.readLine();
 			System.out.println("What is the pilot's nationality? $");
@@ -445,8 +445,8 @@ public class DBproject{
 			String date = in.readLine();
 			String query = "SELECT p.seats - f.num_sold "
 			+ "FROM FlightInfo fi, Flight f, Plane p "
-			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id " 
-			+ "AND f.fnum = " + fnum 
+			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
+			+ "AND f.fnum = " + fnum
 			+ " AND f.actual_departure_date = " + date + ";";
 			esql.executeQuery(query);
 		} catch (Exception e) {
