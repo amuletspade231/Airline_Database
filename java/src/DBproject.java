@@ -433,14 +433,18 @@ public class DBproject{
 	public static void BookFlight(DBproject esql) {//5
 		// Given a customer and a flight that he/she wants to book, add a reservation to the DB
 		//AMANDA AND KATIE
-		System.out.println("What is the customer's id? $");
-		String customer = in.readLine();
-		System.out.println("Which flight should be booked? $");
-		String flight = in.readLine();
-		//TODO: see if flight is already booked
-		//if booked, put on waitlist
-		//else, see if paying now or later
-		//System.out.println("Will this be paid now? (y or n) $");
+		try {
+			System.out.println("What is the customer's id? $");
+			String customer = in.readLine();
+			System.out.println("Which flight should be booked? $");
+			String flight = in.readLine();
+			//TODO: see if flight is already booked
+			//if booked, put on waitlist
+			//else, see if paying now or later
+			//System.out.println("Will this be paid now? (y or n) $");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public static void ListNumberOfAvailableSeats(DBproject esql) {//6
