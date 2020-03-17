@@ -359,15 +359,10 @@ public class DBproject{
 		// Given a pilot, plane and flight, adds a flight in the DB
 		//KATIE
 		try {
-			String sequence = "CREATE SEQUENCE seq "
-			+ "start with 0 "
-			+ "increment by 1 "
-			+ "minvalue 0 "
-			+ "maxvalue 10000 "
-			+ "nocycle;";
-			esql.executeQuery(sequence);
 			//System.out.println("What's the flight number? $");
 			//String fnum = in.readLine();
+			String id_query = "SELECT COUNT(*) FROM Flight";
+			int fnum = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			System.out.println("How much does the flight cost? $");
 			String cost = in.readLine();
 			System.out.println("How many seats are sold? $");
@@ -396,16 +391,18 @@ public class DBproject{
 			String test_query = "SELECT MAX(fnum) FROM Flight;";
 			esql.executeQueryAndPrintResult(test_query);
 
-			int fnum = esql.getCurrSeqVal(sequence);
+			//int fnum = esql.getCurrSeqVal(sequence);
 			//insert into flightinfo
-			System.out.println("What should the flight info id be? $");
-			String finfo = in.readLine();
+			//System.out.println("What should the flight info id be? $");
+			//String finfo = in.readLine();
+			id_query = "SELECT COUNT(*) FROM FlightInfo";
+			int finfo = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			System.out.println("What's the pilot's id? $");
 			String pilot = in.readLine();
 			System.out.println("What's the plane's id? $");
 			String plane = in.readLine();
 			String query2 = "INSERT INTO FlightInfo VALUES ("
-			+ finfo + ", "
+			+ Integer.toString(finfo) + ", "
 			+ Integer.toString(fnum) + ", "
 			+ pilot + ", "
 			+ plane + ");";
@@ -415,10 +412,12 @@ public class DBproject{
 			esql.executeQueryAndPrintResult(test_query);
 
 			//insert into schedule
-			System.out.println("What should the schedule id be? $");
-			String schedule = in.readLine();
+			//System.out.println("What should the schedule id be? $");
+			//String schedule = in.readLine();
+			id_query = "SELECT COUNT(*) FROM Schedule";
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
-			+ schedule + ", "
+			+ Integer.toString(schedule) + ", "
 			+ fnum + ", "
 			+ dep_time + ", "
 			+ arv_time + ");";
@@ -436,12 +435,14 @@ public class DBproject{
 	public static void AddTechnician(DBproject esql) {//4
 		//KATIE
 		try {
-			System.out.println("What is the technician's id? $");
-			String id = in.readLine();
+			//System.out.println("What is the technician's id? $");
+			//String id = in.readLine();
+			String id_query = "SELECT COUNT(*) FROM Pilot";
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			System.out.println("What is the technician's full name? $");
 			String name = in.readLine();
 			String query = "INSERT INTO Technician VALUES ("
-			+ id + ", \'"
+			+ Integer.toString(id) + ", \'"
 			+ name + "\');";
 			esql.executeUpdate(query);
 			System.out.println("Technician added!");
@@ -508,7 +509,7 @@ public class DBproject{
 		// Count repairs per year and list them in ascending order
 		//KATIE
 		try {
-			String query = "SELECT r_year, COUNT(*)"
+			String query = "SELECT r_year, COUNT(*) "
 			+ "FROM ( "
 			+ "SELECT YEAR(repair_date) AS r_year "
 			+ "FROM Repairs; "
