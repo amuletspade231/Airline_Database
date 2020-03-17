@@ -319,8 +319,12 @@ public class DBproject{
 			+ model + "\', "
 			+ age + ", "
 			+ seats + ");";
-			esql.executeQuery(query);
+			esql.executeUpdate(query);
 			System.out.println("Plane added!");
+
+			String test_query = "SELECT *, MAX(id) as last_id FROM Plane WHERE id = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+			
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -340,8 +344,12 @@ public class DBproject{
 			+ id + ", \'"
 			+ name + "\', \'"
 			+ nationality + "\');";
-			esql.executeQuery(query);
+			esql.executeUpdate(query);
 			System.out.println("Pilot added!");
+
+			String test_query = "SELECT *, MAX(id) as last_id FROM Pilot WHERE id = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -383,7 +391,11 @@ public class DBproject{
 			+ arv_time + "\', \'"
 			+ ariv + "\', \'"
 			+ dept + "\');";
-			esql.executeQuery(query);
+			esql.executeUpdate(query);
+
+			String test_query = "SELECT *, MAX(fnum) as last_id FROM Flight WHERE fnum = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+
 			int fnum = esql.getCurrSeqVal(sequence);
 			//insert into flightinfo
 			System.out.println("What should the flight info id be? $");
@@ -397,7 +409,11 @@ public class DBproject{
 			+ Integer.toString(fnum) + ", "
 			+ pilot + ", "
 			+ plane + ");";
-			esql.executeQuery(query2);
+			esql.executeUpdate(query2);
+
+			String test_query = "SELECT *, MAX(flight_id) as last_id FROM Plane WHERE flight_id = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+
 			//insert into schedule
 			System.out.println("What should the schedule id be? $");
 			String schedule = in.readLine();
@@ -406,7 +422,11 @@ public class DBproject{
 			+ fnum + ", "
 			+ dep_time + ", "
 			+ arv_time + ");";
-			esql.executeQuery(query3);
+			esql.executeUpdate(query3);
+
+			String test_query = "SELECT *, MAX(flightNum) as last_id FROM Plane WHERE flightNum = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+
 			System.out.println("Flight added!");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -423,8 +443,12 @@ public class DBproject{
 			String query = "INSERT INTO Technician VALUES ("
 			+ id + ", \'"
 			+ name + "\');";
-			esql.executeQuery(query);
+			esql.executeUpdate(query);
 			System.out.println("Technician added!");
+
+			String test_query = "SELECT *, MAX(id) as last_id FROM Technician WHERE id = last_id;";
+			esql.executeQueryAndPrintResult(test_query);
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
