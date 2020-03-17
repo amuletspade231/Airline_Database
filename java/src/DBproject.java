@@ -303,7 +303,7 @@ public class DBproject{
 		//AMANDA
 		try {
 			String id_query = "SELECT id FROM Plane";
-			int id = executeQuery(id_query);
+			int id = esql.executeQuery(id_query);
 			//int id = 1000;
 			System.out.println("What is the plane's make? $");
 			String make = in.readLine();
@@ -330,7 +330,7 @@ public class DBproject{
 		//AMANDA
 		try {
 			String id_query = "SELECT id FROM Pilot";
-			int id = executeQuery(id_query);
+			int id = esql.executeQuery(id_query);
 			//int id = 1000;
 			System.out.println("What is the pilot's full name? $");
 			String name = in.readLine();
