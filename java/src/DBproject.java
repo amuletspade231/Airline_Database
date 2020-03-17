@@ -420,7 +420,7 @@ public class DBproject{
 			String query3 = "INSERT INTO Schedule VALUES ("
 			+ schedule + ", "
 			+ fnum + ", \'"
-			+ dep_time + "\', "
+			+ dep_time + "\', \'"
 			+ arv_time + "\');";
 			esql.executeUpdate(query3);
 
