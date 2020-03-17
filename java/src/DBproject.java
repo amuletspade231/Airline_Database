@@ -363,7 +363,7 @@ public class DBproject{
 			+ "start with 0 "
 			+ "increment by 1 "
 			+ "minvalue 0 "
-			+ "max value 10000 "
+			+ "maxvalue 10000 "
 			+ "nocycle";
 			esql.executeQuery(sequence);
 			//System.out.println("What's the flight number? $");
