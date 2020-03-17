@@ -494,14 +494,20 @@ public class DBproject{
 			String query = "SELECT * FROM Reservation ";
 			switch(status) {
 				case "w" :
+					query += "WHERE status = 'W';";
+					break;
 				case "W" :
 					query += "WHERE status = 'W';";
 					break;
 				case "c" :
+					query += "WHERE status = 'C';";
+					break;
 				case "C" :
 					query += "WHERE status = 'C';";
 					break;
 				case "r" :
+					query += "WHERE status = 'R';";
+					break;
 				case "R" :
 					query += "WHERE status = 'R';";
 					break;
