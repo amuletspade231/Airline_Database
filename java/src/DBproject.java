@@ -499,7 +499,7 @@ public class DBproject{
 		try {
 			System.out.println("Would you like to find the number of waitlisted, confirmed, or reserved passengers? (w, c, or r) $");
 			String status = in.readLine();
-			String query = "SELECT * FROM Reservation ";
+			String query = "SELECT COUNT(*) FROM Reservation ";
 			switch(status) {
 				case "w" :
 					query += "WHERE status = 'W';";
@@ -524,8 +524,8 @@ public class DBproject{
 					break;
 			}
 
-			int rows = esql.executeQuery(query);
-			System.out.println("There are " + rows + " passengers with that status.");
+			esql.executeQueryAndPrintResult(query);
+			//System.out.println("There are " + rows + " passengers with that status.");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
