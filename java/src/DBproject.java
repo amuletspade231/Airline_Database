@@ -495,9 +495,9 @@ public class DBproject{
 			+ " AND f.actual_departure_date = \'" + date + "\';";
 			int seats_sold = Integer.parseInt(esql.executeQueryAndReturnResult(query2).get(0).get(0));
 
-			avail_seats = plane_seats - seats_sold;
+			int avail_seats = plane_seats - seats_sold;
 
-			System.out.println("Number of available seats: "+ avail_seats);
+			System.out.println("Number of available seats: " + avail_seats);
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
