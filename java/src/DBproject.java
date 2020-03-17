@@ -477,13 +477,13 @@ public class DBproject{
 		try {
 			System.out.println("Please enter a flight number: $");
 			String fnum = in.readLine();
-			System.out.println("Please enter a date: $");
+			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
 			String query = "SELECT p.seats - f.num_sold "
 			+ "FROM FlightInfo fi, Flight f, Plane p "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
-			+ " AND f.actual_departure_date = " + date + ";";
+			+ " AND f.actual_departure_date = \'" + date + "\';";
 			esql.executeQuery(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
