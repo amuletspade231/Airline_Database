@@ -481,7 +481,7 @@ public class DBproject{
 			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
 
-			String query1 = "SELECT p.seats"
+			String query1 = "SELECT p.seats "
 			+ "FROM FlightInfo fi, Flight f, Plane p "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
