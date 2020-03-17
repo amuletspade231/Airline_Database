@@ -416,7 +416,7 @@ public class DBproject{
 			//System.out.println("What should the schedule id be? $");
 			//String schedule = in.readLine();
 			id_query = "SELECT COUNT(*) FROM Schedule";
-			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
+			int schedule = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
 			+ Integer.toString(schedule) + ", "
 			+ fnum + ", "
