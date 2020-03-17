@@ -482,10 +482,10 @@ public class DBproject{
 			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
 			String query = "SELECT (p.seats - f.num_sold) AS available_seats "
-			+ "FROM FlightInfo fi, Flight f, Plane p "
+			+ "FROM FlightInfo fi, Flight f, Plane p, Schedule s "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
-			+ " AND f.actual_departure_date = \'" + date + "\';";
+			+ " AND s.departure_time = \'" + date + "\';";
 			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
