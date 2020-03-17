@@ -367,7 +367,7 @@ public class DBproject{
 			String cost = in.readLine();
 			System.out.println("How many seats are sold? $");
 			String seats = in.readLine();
-			System.out.println("How many stops does this flight make? $");
+			System.out.println("How mnay stops does this flight make? $");
 			String stops = in.readLine();
 			System.out.println("What is the departure time? (use format yyyy-mm-dd hh:mm) $");
 			String dep_time = in.readLine();
@@ -378,7 +378,7 @@ public class DBproject{
 			System.out.println("Where is the flight departing from? $");
 			String dept = in.readLine();
 			String query = "INSERT INTO Flight VALUES ("
-			+ fnum + ", "
+			+ " seq.nextval , "
 			+ cost + ", "
 			+ seats + ", "
 			+ stops + ", \'"
@@ -415,7 +415,7 @@ public class DBproject{
 			//System.out.println("What should the schedule id be? $");
 			//String schedule = in.readLine();
 			id_query = "SELECT COUNT(*) FROM Schedule";
-			int schedule = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			String query3 = "INSERT INTO Schedule VALUES ("
 			+ Integer.toString(schedule) + ", "
 			+ fnum + ", "
@@ -480,25 +480,12 @@ public class DBproject{
 			String fnum = in.readLine();
 			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
-
-			String query1 = "SELECT p.seats "
+			String query = "SELECT (p.seats - f.num_sold) AS available_seats "
 			+ "FROM FlightInfo fi, Flight f, Plane p "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
 			+ " AND f.actual_departure_date = \'" + date + "\';";
-			int plane_seats = Integer.parseInt(esql.executeQueryAndReturnResult(query1).get(0).get(0));
-
-			String query2 = "SELECT f.num_sold "
-			+ "FROM FlightInfo fi, Flight f, Plane p "
-			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
-			+ "AND f.fnum = " + fnum
-			+ " AND f.actual_departure_date = \'" + date + "\';";
-			int seats_sold = Integer.parseInt(esql.executeQueryAndReturnResult(query2).get(0).get(0));
-
-			int avail_seats = plane_seats - seats_sold;
-
-			System.out.println("Number of available seats: " + avail_seats);
-
+			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -522,13 +509,13 @@ public class DBproject{
 		// Count repairs per year and list them in ascending order
 		//KATIE
 		try {
-			String query = "SELECT R.r_year, COUNT(*) AS Number_Of_Repairs"
+			String query = "SELECT r_year, COUNT(*) "
 			+ "FROM ( "
-			+ "SELECT EXTRACT(YEAR FROM repair_date) AS r_year "
-			+ "FROM Repairs "
-			+ ") AS R "
-			+ "GROUP BY R.r_year "
-			+ "ORDER BY R.r_year ASC;";
+			+ "SELECT YEAR(repair_date) AS r_year "
+			+ "FROM Repairs; "
+			+ ") "
+			+ "GROUP BY r_year "
+			+ "ORDER BY r_year ASC;";
 			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
