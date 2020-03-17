@@ -302,8 +302,8 @@ public class DBproject{
 	public static void AddPlane(DBproject esql) {//1
 		//AMANDA
 		try {
-			String id_query = "SELECT id FROM Plane";
-			int id = esql.executeQuery(id_query);
+			String id_query = "SELECT COUNT(*) FROM Plane";
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			//int id = 1000;
 			System.out.println("What is the plane's make? $");
 			String make = in.readLine();
@@ -333,8 +333,8 @@ public class DBproject{
 	public static void AddPilot(DBproject esql) {//2
 		//AMANDA
 		try {
-			String id_query = "SELECT id FROM Pilot";
-			int id = esql.executeQuery(id_query);
+			String id_query = "SELECT COUNT(*) FROM Pilot";
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
 			//int id = 1000;
 			System.out.println("What is the pilot's full name? $");
 			String name = in.readLine();
