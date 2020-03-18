@@ -486,9 +486,9 @@ public class DBproject{
 			} else { //else, see if paying now or later
 				System.out.println("Will this be paid now? (y or n) $");
 				String op = in.readLine();
-				if(op == 'y' || op == 'Y') {
+				if(op == "y" || op == "Y") {
 					query += "\'C\'";
-				} else if (op == 'n' || op == 'N') {
+				} else if (op == "n" || op == "N") {
 					query += "\'R\'";
 				}
 			}
