@@ -470,8 +470,9 @@ public class DBproject{
 			+ flight + "\'"
 			+ " AND fi.plane_id = p.id;";
 			int max_seats = Integer.parseInt(esql.executeQueryAndReturnResult(max).get(0).get(0)) ;
-			String sold = "SELECT f.num_sold FROM Flight f WHERE f.fnum = "
+			String seats_sold = "SELECT f.num_sold FROM Flight f WHERE f.fnum = "
 			+ flight + ";";
+			int sold = Integer.parseInt(esql.executeQueryAndReturnResult(seats_sold).get(0).get(0)) ;
 
 			String id_query = "SELECT COUNT(*) FROM Reservation";
 			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
