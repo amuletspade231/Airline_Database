@@ -466,7 +466,7 @@ public class DBproject{
 			String flight = in.readLine();
 
 			//TODO: see if flight is already full
-			String max = "SELECT p.seats FROM FlightInfo fi, Plane p WHERE fi.flight_id = \'" 
+			String max = "SELECT p.seats FROM FlightInfo fi, Plane p WHERE fi.flight_id = \'"
 			+ flight + "\'"
 			+ " AND fi.plane_id = p.id;";
 			int max_seats = Integer.parseInt(esql.executeQueryAndReturnResult(max).get(0).get(0)) ;
@@ -508,7 +508,7 @@ public class DBproject{
 			String fnum = in.readLine();
 			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
-			String query = "SELECT (p.seats - f.num_sold) AS available_seats "
+			String query = "SELECT UNIQUE (p.seats - f.num_sold) AS available_seats "
 			+ "FROM FlightInfo fi, Flight f, Plane p, Schedule s "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
