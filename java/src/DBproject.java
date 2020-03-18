@@ -464,10 +464,37 @@ public class DBproject{
 			String customer = in.readLine();
 			System.out.println("Which flight should be booked? $");
 			String flight = in.readLine();
-			//TODO: see if flight is already booked
-			//if booked, put on waitlist
-			//else, see if paying now or later
-			//System.out.println("Will this be paid now? (y or n) $");
+
+			//TODO: see if flight is already full
+			String max = "SELECT p.seats FROM FlightInfo fi, Plane p WHERE fi.flight_id = \'" 
+			+ flight + "\'"
+			+ " AND fi.plane_id = p.id;";
+			int max_seats = Integer.parseInt(esql.executeQueryAndReturnResult(max).get(0).get(0)) ;
+			String sold = "SELECT f.num_sold FROM Flight f WHERE f.fnum = "
+			+ flight + ";";
+
+			String id_query = "SELECT COUNT(*) FROM Reservation";
+			int id = Integer.parseInt(esql.executeQueryAndReturnResult(id_query).get(0).get(0));
+			String query = "INSERT INTO Reservation VALUES ("
+			+ id + ", "
+			+ customer + ", "
+			+ flight + ", ";
+			//if full, put on waitlist
+			if(sold >= max_seats) {
+				System.out.println("Sorry, this flight is already full. Adding to waitlist...");
+				query += "\'W\');";
+			} else { //else, see if paying now or later
+				System.out.println("Will this be paid now? (y or n) $");
+				String op = in.readLine();
+				if(op == 'y' || op == 'Y') {
+					query += "\'C\'";
+				} else if (op == 'n' || op == 'N') {
+					query += "\'R\'";
+				}
+			}
+
+			esql.executeUpdate(query);
+			System.out.println("Your reservation has been added!");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
