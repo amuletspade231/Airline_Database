@@ -479,6 +479,9 @@ public class DBproject{
 			+ id + ", "
 			+ customer + ", "
 			+ flight + ", ";
+
+			System.out.println(max + " " + sold);
+			
 			//if full, put on waitlist
 			if(sold >= max_seats) {
 				System.out.println("Sorry, this flight is already full. Adding to waitlist...");
@@ -487,8 +490,8 @@ public class DBproject{
 				System.out.println("Will this be paid now? (y or n) $");
 				String op = in.readLine();
 				switch(op) {
-					case "y":
-					case "Y":
+					case "y": //Can pay now so
+					case "Y": // confirm reservation
 						query += "\'C\');";
 						System.out.println("We will confirm your reservation now...");
 						break;
@@ -501,19 +504,7 @@ public class DBproject{
 						System.out.println(op);
 						break;
 				}
-			// 	if(op == "y" || op == "Y") {
-			// 		query += "\'C\';";
-			// 		System.out.println("We will confirm your reservation now...");
-			// 	} else if (op == "n" || op == "N") {
-			// 		query += "\'R\';";
-			// 		System.out.println("Please pay before seats get full. We will reserve your flight now...");
-			// 	}
-			// 	else {
-			// 		System.out.println(op);
-			// 	}
 			}
-
-			System.out.println(query);
 
 			esql.executeUpdate(query);
 			System.out.println("Your reservation has been added!");
