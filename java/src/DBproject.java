@@ -486,17 +486,29 @@ public class DBproject{
 			} else { //else, see if paying now or later
 				System.out.println("Will this be paid now? (y or n) $");
 				String op = in.readLine();
-				if(op == "y" || op == "Y") {
-					query += "\'C\';";
-					System.out.println("We will confirm your reservation now...");
-				} else if (op == "n" || op == "N") {
-					query += "\'R\';";
-					System.out.println("Please pay before seats get full. We will reserve your flight now...");
+				switch(op) {
+					case "y":
+					case "Y":
+						query += "\'C\';";
+						System.out.println("We will confirm your reservation now...");
+					case "n":
+					case "N":
+						query += "\'R\';";
+						System.out.println("Please pay before seats get full. We will reserve your flight now...");
+					default:
+						System.out.println(op);
 				}
-				else {
-					System.out.println(op);
-				}
-			}
+			// 	if(op == "y" || op == "Y") {
+			// 		query += "\'C\';";
+			// 		System.out.println("We will confirm your reservation now...");
+			// 	} else if (op == "n" || op == "N") {
+			// 		query += "\'R\';";
+			// 		System.out.println("Please pay before seats get full. We will reserve your flight now...");
+			// 	}
+			// 	else {
+			// 		System.out.println(op);
+			// 	}
+			// }
 
 			System.out.println(query);
 
