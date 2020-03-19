@@ -480,8 +480,8 @@ public class DBproject{
 			+ customer + ", "
 			+ flight + ", ";
 
-			System.out.println(max + " " + sold);
-			
+			System.out.println("max seats " + max_seats + " sold " + sold);
+
 			//if full, put on waitlist
 			if(sold >= max_seats) {
 				System.out.println("Sorry, this flight is already full. Adding to waitlist...");
