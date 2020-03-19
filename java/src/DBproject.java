@@ -508,7 +508,7 @@ public class DBproject{
 			// 	else {
 			// 		System.out.println(op);
 			// 	}
-			// }
+			}
 
 			System.out.println(query);
 
