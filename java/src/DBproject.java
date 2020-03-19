@@ -588,13 +588,13 @@ public class DBproject{
 	// Assume year is ascending
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {// Choice 8
 		try {
-			String query = "SELECT r_year, COUNT(*) "
+			String query = "SELECT R.r_year, COUNT(*) "
 			+ "FROM ( "
 			+ "SELECT YEAR(repair_date) AS r_year "
 			+ "FROM Repairs; "
-			+ ") "
-			+ "GROUP BY r_year "
-			+ "ORDER BY r_year ASC;";
+			+ ") AS R "
+			+ "GROUP BY R.r_year "
+			+ "ORDER BY R.r_year ASC;";
 
 			esql.executeQueryAndPrintResult(query);
 
