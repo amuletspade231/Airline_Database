@@ -491,12 +491,15 @@ public class DBproject{
 					case "Y":
 						query += "\'C\';";
 						System.out.println("We will confirm your reservation now...");
+						break;
 					case "n":
 					case "N":
 						query += "\'R\';";
 						System.out.println("Please pay before seats get full. We will reserve your flight now...");
+						break;
 					default:
 						System.out.println(op);
+						break;
 				}
 			// 	if(op == "y" || op == "Y") {
 			// 		query += "\'C\';";
