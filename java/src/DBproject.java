@@ -494,6 +494,8 @@ public class DBproject{
 					System.out.println("Please pay before seats get full. We will reserve your flight now...");
 				}
 			}
+			
+			System.out.println(query);
 
 			esql.executeUpdate(query);
 			System.out.println("Your reservation has been added!");
