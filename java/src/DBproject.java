@@ -493,8 +493,11 @@ public class DBproject{
 					query += "\'R\';";
 					System.out.println("Please pay before seats get full. We will reserve your flight now...");
 				}
+				else {
+					System.out.println(op);
+				}
 			}
-			
+
 			System.out.println(query);
 
 			esql.executeUpdate(query);
