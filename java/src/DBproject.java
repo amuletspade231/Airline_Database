@@ -460,15 +460,14 @@ public class DBproject{
 		// Given a customer and a flight that he/she wants to book, add a reservation to the DB
 		//AMANDA AND KATIE
 		try {
-			System.out.println("What is the customer's id? $");
+			System.out.println("Please enter your customer id. $");
 			String customer = in.readLine();
-			System.out.println("Which flight should be booked? $");
+			System.out.println("Please enter the flight number of the flight you wish to book. $");
 			String flight = in.readLine();
 
-			//TODO: see if flight is already full
-			String max = "SELECT p.seats FROM FlightInfo fi, Plane p WHERE fi.flight_id = \'"
-			+ flight + "\'"
-			+ " AND fi.plane_id = p.id;";
+			//see if flight is already full
+			String max = "SELECT p.seats FROM FlightInfo fi, Plane p WHERE fi.flight_id = "
+			+ flight + " AND fi.plane_id = p.id;";
 			int max_seats = Integer.parseInt(esql.executeQueryAndReturnResult(max).get(0).get(0)) ;
 			String seats_sold = "SELECT f.num_sold FROM Flight f WHERE f.fnum = "
 			+ flight + ";";
@@ -489,8 +488,10 @@ public class DBproject{
 				String op = in.readLine();
 				if(op == "y" || op == "Y") {
 					query += "\'C\'";
+					System.out.println("We will confirm your reservation now...");
 				} else if (op == "n" || op == "N") {
 					query += "\'R\'";
+					System.out.println("Please pay before seats get full. We will reserve your flight now...");
 				}
 			}
 
@@ -509,11 +510,11 @@ public class DBproject{
 			String fnum = in.readLine();
 			System.out.println("Please enter a date (use format yyyy-mm-dd hh:mm): $");
 			String date = in.readLine();
-			String query = "SELECT UNIQUE (p.seats - f.num_sold) AS available_seats "
-			+ "FROM FlightInfo fi, Flight f, Plane p, Schedule s "
+			String query = "SELECT (p.seats - f.num_sold) AS available_seats "
+			+ "FROM FlightInfo fi, Flight f, Plane p "
 			+ "WHERE fi.flight_id = f.fnum AND fi.plane_id = p.id "
 			+ "AND f.fnum = " + fnum
-			+ " AND s.departure_time = \'" + date + "\';";
+			+ " AND f.actual_departure_date = \'" + date + "\';";
 			esql.executeQueryAndPrintResult(query);
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
