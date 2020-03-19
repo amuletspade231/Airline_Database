@@ -489,12 +489,12 @@ public class DBproject{
 				switch(op) {
 					case "y":
 					case "Y":
-						query += "\'C\';";
+						query += "\'C\');";
 						System.out.println("We will confirm your reservation now...");
 						break;
 					case "n":
 					case "N":
-						query += "\'R\';";
+						query += "\'R\');";
 						System.out.println("Please pay before seats get full. We will reserve your flight now...");
 						break;
 					default:
