@@ -569,6 +569,7 @@ public class DBproject{
 	}
 
 	// Count number of repairs per planes and list them in descending order
+	// Assume repairs is descending
 	public static void ListsTotalNumberOfRepairsPerPlane(DBproject esql) {// Choice 7
 		try {
 			String query = "SELECT plane_id, COUNT(rid) as num_repairs "
@@ -584,6 +585,7 @@ public class DBproject{
 	}
 
 	// Count repairs per year and list them in ascending order
+	// Assume year is ascending
 	public static void ListTotalNumberOfRepairsPerYear(DBproject esql) {// Choice 8
 		try {
 			String query = "SELECT r_year, COUNT(*) "
@@ -657,7 +659,7 @@ public class DBproject{
 			+ "CREATE INDEX Pilot_index ON Pilot USING BTREE (id); "
 			+ "CREATE INDEX Plane_index ON Plane USING BTREE (id); "
 			+ "CREATE INDEX Technician_index ON Technician USING BTREE (id); "
-			+ "CREATE INDEX Reservation_index ON Reservation USING BTREE (rnum); " 
+			+ "CREATE INDEX Reservation_index ON Reservation USING BTREE (rnum); "
 			+ "CREATE INDEX FlightInfo_index ON FlightInfo USING BTREE (fiid); "
 			+ "CREATE INDEX Repairs_index ON Repairs USING BTREE (rid); "
 			+ "CREATE INDEX Schedule_index ON Repairs USING BTREE (id); ";
