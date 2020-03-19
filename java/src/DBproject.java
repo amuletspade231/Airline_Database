@@ -241,7 +241,7 @@ public class DBproject{
 			esql = new DBproject (dbname, dbport, user, "");
 
 			//creating indexes
-			createIndexes(esql);
+			createIndices(esql);
 
 			boolean keepon = true;
 			while(keepon){
@@ -407,7 +407,7 @@ public class DBproject{
 			+ arv_time + "\', \'"
 			+ ariv + "\', \'"
 			+ dept + "\');";
-			System.out.println(query);
+			//System.out.println(query);
 			esql.executeUpdate(query);
 
 			// Test if insertion worked
@@ -642,7 +642,7 @@ public class DBproject{
 		}
 	}
 
-	public static void createIndexes(DBproject esql) {
+	public static void createIndices(DBproject esql) {
 		try {
 			System.out.println("Creating indexes...");
 			String query = "DROP INDEX IF EXISTS Customer_index; "
@@ -662,7 +662,7 @@ public class DBproject{
 			+ "CREATE INDEX Reservation_index ON Reservation USING BTREE (rnum); "
 			+ "CREATE INDEX FlightInfo_index ON FlightInfo USING BTREE (fiid); "
 			+ "CREATE INDEX Repairs_index ON Repairs USING BTREE (rid); "
-			+ "CREATE INDEX Schedule_index ON Repairs USING BTREE (id); ";
+			+ "CREATE INDEX Schedule_index ON Schedule USING BTREE (id); ";
 			esql.executeUpdate(query);
 			System.out.println("Indexes Created!");
 		} catch (Exception e) {

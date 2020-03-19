@@ -1,4 +1,5 @@
 # Airline_Database
+Project was demoed at 3/19/2020 by Professor Salloum.
 
 ## How to Start the Database
 1. Download all files by forking or cloning the repository.
@@ -43,3 +44,9 @@ For all queries, we assume that the id's or primary keys start at 0 and incremen
     - Here we prompt the user for which passenger status we wish to find, (waitlisted, confirmed, or reserved). 
     - We check for casing and query based on the user input.
     - If the user does not put in a valid status, we exit. We assume the user is smart.
+
+## Extras
+1. Error Handling
+    - We made sure for certain inputs (e.g. y or n) that the user is not able to input anything other than what we can take in.
+2. Indices
+    - There is an extra java function createIndices(DBproject) that will create the indices before the menu is called. This allows faster look up.
