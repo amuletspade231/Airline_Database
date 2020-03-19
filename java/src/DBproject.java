@@ -488,9 +488,9 @@ public class DBproject{
 				System.out.println("Will this be paid now? (y or n) $");
 				String op = in.readLine();
 				if(op == "y" || op == "Y") {
-					query += "\'C\'";
+					query += "\'C\';";
 				} else if (op == "n" || op == "N") {
-					query += "\'R\'";
+					query += "\'R\';";
 				}
 			}
 
