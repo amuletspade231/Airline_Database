@@ -591,7 +591,7 @@ public class DBproject{
 			String query = "SELECT R.r_year, COUNT(*) "
 			+ "FROM ( "
 			+ "SELECT YEAR(repair_date) AS r_year "
-			+ "FROM Repairs; "
+			+ "FROM Repairs "
 			+ ") AS R "
 			+ "GROUP BY R.r_year "
 			+ "ORDER BY R.r_year ASC;";
