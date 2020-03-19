@@ -590,7 +590,7 @@ public class DBproject{
 		try {
 			String query = "SELECT R.r_year, COUNT(*) "
 			+ "FROM ( "
-			+ "SELECT YEAR(repair_date) AS r_year "
+			+ "SELECT EXTRACT (YEAR from repair_date) AS r_year "
 			+ "FROM Repairs "
 			+ ") AS R "
 			+ "GROUP BY R.r_year "
