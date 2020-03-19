@@ -240,6 +240,9 @@ public class DBproject{
 
 			esql = new DBproject (dbname, dbport, user, "");
 
+			//creating indexes
+			createIndexes(esql);
+
 			boolean keepon = true;
 			while(keepon){
 				System.out.println("MAIN MENU");
@@ -596,6 +599,34 @@ public class DBproject{
 
 			esql.executeQueryAndPrintResult(query);
 			//System.out.println("There are " + rows + " passengers with that status.");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
+	public static void createIndexes(DBproject esql) {
+		try {
+			System.out.println("Creating indexes...");
+			String query = "DROP INDEX IF EXISTS Customer_index; "
+			+ "DROP INDEX IF EXISTS Flight_index; "
+			+ "DROP INDEX IF EXISTS Pilot_index; "
+			+ "DROP INDEX IF EXISTS Plane_index; "
+			+ "DROP INDEX IF EXISTS Technician_index; "
+			+ "DROP INDEX IF EXISTS Reservation_index; "
+			+ "DROP INDEX IF EXISTS FlightInfo_index; "
+			+ "DROP INDEX IF EXISTS Repairs_index; "
+			+ "DROP INDEX IF EXISTS Schedule_index; "
+			+ "CREATE INDEX Customer_index ON Customer USING BTREE (id); "
+			+ "CREATE INDEX Flight_index ON Flight USING BTREE (fnum); "
+			+ "CREATE INDEX Pilot_index ON Pilot USING BTREE (id); "
+			+ "CREATE INDEX Plane_index ON Plane USING BTREE (id); "
+			+ "CREATE INDEX Technician_index ON Technician USING BTREE (id); "
+			+ "CREATE INDEX Reservation_index ON Reservation USING BTREE (rnum); " 
+			+ "CREATE INDEX FlightInfo_index ON FlightInfo USING BTREE (fiid); "
+			+ "CREATE INDEX Repairs_index ON Repairs USING BTREE (rid); "
+			+ "CREATE INDEX Schedule_index ON Repairs USING BTREE (id); ";
+			esql.executeUpdate(query);
+			System.out.println("Indexes Created!");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
